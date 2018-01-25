@@ -35,7 +35,9 @@ export default class Screen1 extends Component
                         </Button>
                     </Left>
                     <Right>
-                        <Button transparent style={{alignItems:'flex-end'}}>
+                        <Button transparent style={{alignItems:'flex-end'}}
+                        onPress={() => this.props.navigation.navigate("ScreenTwo")}
+                        >
                             <Text style={{color:'#154360'}}>Next</Text>
                         </Button>
                     </Right>
