@@ -3,6 +3,7 @@ import Expo from "expo";
 import Screen1 from "./src/Screen1"
 import Screen2 from "./src/Screen2"
 import Screen3 from "./src/Screen3"
+import MainScreen from "./src/MainScreen"
 
 import { View } from "react-native";
 import { Container, Content, Picker, Button, Text } from "native-base";
@@ -25,7 +26,7 @@ export default class AwesomeApp extends Component {
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
     }
-      return <Screen2 />
+      return <MainScreen />
     
   }
 }
