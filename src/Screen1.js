@@ -25,7 +25,7 @@ export default class Screen1 extends Component
               <Grid>
                   <Col >
                      <Row size={8} style={styles.container}>   
-                        <Text style={{fontSize:55,fontWeight:'bold',color:'#154360'}}> IPLBrainz </Text>
+                        <Text style={{fontSize:55,fontWeight:'bold',color:'#154360'}}> IPLBox </Text>
                         <Image source={require('./imgs/AlexaIPL.png')} style={{width:200,height:200}}/>
                     </Row>
                     <Row size={1} style={{backgroundColor:'#FFFFFF'}}>
