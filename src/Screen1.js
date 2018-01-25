@@ -30,7 +30,9 @@ export default class Screen1 extends Component
                     </Row>
                     <Row size={1} style={{backgroundColor:'#FFFFFF'}}>
                     <Left>
-                    <Button transparent style={{alignItems:'flex-end'}}>
+                    <Button transparent style={{alignItems:'flex-end'}}
+                    onPress={() => this.props.navigation.navigate("ScreenMain")}
+                    >
                             <Text style={{color:'#154360'}} >Skip</Text>
                         </Button>
                     </Left>
