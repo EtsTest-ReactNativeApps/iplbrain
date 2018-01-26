@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {BackHandler} from "react-native"
 import Expo from "expo";
 import Screen1 from "./src/MainIndex"
 import Screen2 from "./src/Screen2"
@@ -13,6 +14,7 @@ export default class AwesomeApp extends Component {
     this.state = {
       isReady: false
     };
+    
   }
   async componentWillMount() {
     await Expo.Font.loadAsync({
@@ -29,4 +31,5 @@ export default class AwesomeApp extends Component {
       return <Screen1 />
     
   }
+  
 }

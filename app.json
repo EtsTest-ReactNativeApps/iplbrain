@@ -1,5 +1,7 @@
 {
   "expo": {
-    "sdkVersion": "23.0.0"
+    "sdkVersion": "23.0.0",
+    "name":"IPL Box",
+    "icon":"./src/imgs/AlexaIPL.png"
   }
 }

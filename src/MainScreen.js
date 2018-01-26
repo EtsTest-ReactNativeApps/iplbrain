@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import {AppRegistry,StyleSheet,Image} from 'react-native';
+
+import {AppRegistry,StyleSheet,Image,BackHandler} from 'react-native';
 import {
 Text,
 View,
@@ -145,3 +146,5 @@ const styles = StyleSheet.create({
     answer_text:{fontSize:16},
     error_text:{fontSize:16,color:'red'}
   });
+
+  

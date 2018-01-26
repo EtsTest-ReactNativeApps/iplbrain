@@ -23,7 +23,10 @@ const StackRouter = StackNavigator({
   },
     {
         headerMode: "none"
-    }
+    },
+    {
+        initialRouteName: 'ScreenMain',
+      }
   )
   
   
