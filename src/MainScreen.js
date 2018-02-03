@@ -15,36 +15,54 @@ Right,
 Card,
 CardItem,
 Thumbnail,
+List,
+ListItem
 } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import Icon from 'react-native-vector-icons/FontAwesome';
 window.navigator.userAgent = 'react-native';
 import io from '../node_modules/socket.io-client/dist/socket.io'
 
-
 export default class MainScreen extends Component
 {   
-    state={
-        timestamp: 'dash',
-        query_text: 'dash',
-        response_text: 'dash',
-        response_time: 'dash',
-        is_error_occured: 'dash'
-    }
-
+   
     constructor(){
         super();
-         this.socket=io('https://bot.camouflage81.hasura-app.io/test_websocket',{jsonp: true});
-        /* this.socket.on('intentRequest',()=>{
-            this.setState({timestamp: query_log.timestamp});
-        }) */
-
+        this.state={
+            queryText:' Alexa, ask IPLBox who has the highest strike rate ?',
+            queryTime:' 20:23:31 ',
+            responseText:' XYZ Batsman has the highest strike rate.',
+            responseTime:'20:23:32 ',
+            connectionMessage:''
+        }
         
+        this.socket = io('https://bot.camouflage81.hasura-app.io/test_websocket');
+        console.log('Connected');
+        
+       
+    }
+      componentWillMount(){
+        this.socket.on('connect',this.setState({connectionMessage:'CONNECTED'}));
+        this.socket.on('connect_error',this.setState({connectionMessage:'ERROR'}));
+        this.socket.on('intentRequest',(query_log)=>{
+            this.setState(
+                {
+                    queryText:query_log.query_text,
+                    queryTime:query_log.timestamp,
+                    responseText:query_log.response_text,
+                    responseTime:query_log.response_time
+                }
+            )
+        })
       }
     
+        
+      
+    
     render()
-    {
+    { 
         return(
+          
             <Container>
                 <Header style={{marginTop:24,backgroundColor:'#154360'}} >
                     <Left>
@@ -67,12 +85,12 @@ export default class MainScreen extends Component
                             <Body />
                             <Right style={styles.time_style} >
                                 <Thumbnail source={require('./imgs/Time.png')} style={styles.time_thumbnail} />
-                                <Text style={styles.time_text} > 20:23:31 </Text>
+                                <Text style={styles.time_text} > {this.state.queryTime} </Text>
                             </Right>
                         </CardItem>
                         <CardItem style={styles.answer_item} >
                             <Text style={styles.answer_text} >
-                                Alexa, ask IPLBox who has the highest strike rate ?
+                               {this.state.queryText}
                             </Text>
                         </CardItem>
                         <CardItem>
@@ -83,12 +101,12 @@ export default class MainScreen extends Component
                             <Body />
                             <Right style={styles.time_style}>
                                 <Thumbnail source={require('./imgs/Time.png')} style={styles.time_thumbnail} />
-                                <Text style={styles.time_text} > 20:23:32 </Text>
+                                <Text style={styles.time_text} > {this.state.responseTime} </Text>
                             </Right>
                         </CardItem>
                         <CardItem style={styles.answer_item} >
                             <Text style={styles.answer_text} >
-                                XYZ Batsman has the highest strike rate.
+                               {this.state.responseText}
                             </Text>
                         </CardItem>
                         <CardItem >
@@ -103,58 +121,18 @@ export default class MainScreen extends Component
 
                     </Card>
 
-                    <Card>
-                        <CardItem >
-                            <Left>
-                                <Thumbnail source={require('./imgs/User.png')} style={styles.title_thumbnail} />
-                                <Text style={styles.title_text} >
-                                    Query
-                                </Text>
-                            </Left>
-                            <Body />
-                            <Right style={styles.time_style} >
-                                <Thumbnail source={require('./imgs/Time.png')} style={styles.time_thumbnail} />
-                                <Text style={styles.time_text} > 20:23:31 </Text>
-                            </Right>
-                        </CardItem>
-                        <CardItem style={styles.answer_item} >
-                            <Text style={styles.answer_text} >
-                                Alexa, ask IPLBox who has the highest ?
+                                     
+                   <Card>
+                       <CardItem>
+                           <Text>
+                               {this.state.connectionMessage}
                             </Text>
                         </CardItem>
-                        <CardItem>
-                            <Left>
-                                <Thumbnail source={require('./imgs/AlexaIPL.png')} style={styles.title_thumbnail} />
-                                <Text style={styles.title_text}> Response </Text>
-                            </Left>
-                            <Body />
-                            <Right style={styles.time_style}>
-                                <Thumbnail source={require('./imgs/Time.png')} style={styles.time_thumbnail} />
-                                <Text style={styles.time_text} > 20:23:32 </Text>
-                            </Right>
-                        </CardItem>
-                        <CardItem style={styles.answer_item} >
-                            <Text style={styles.error_text} >
-                                Error Slot Missing from the utterance!
-                            </Text>
-                        </CardItem>
-                        <CardItem >
-                            <Left>
-                                <Thumbnail source={require('./imgs/ResponseTime.png')} style={styles.title_thumbnail} />
-                                <Text style={styles.title_text} >
-                                    Response Time :
-                                </Text>
-                                <Text style={styles.answer_text} > 1 second </Text>
-                            </Left>
-                        </CardItem>
-
                     </Card>
-                    {/* <Card>
-                        <CardItem>
-                        <Text> {this.state.timestamp}</Text>
-                        </CardItem>
-                        </Card> */}
                 </Content>
+                
+
+
             </Container>
 
         );
