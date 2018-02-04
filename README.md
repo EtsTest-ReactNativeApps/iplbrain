@@ -8,9 +8,9 @@ This repository consists of the React-Native frontend code for a mobile applicat
 
 Layout Screenshots :
 
-<img src="https://github.com/dhairyagada/iplbrain/blob/master/screenshots/1.png" width=50%>   
-<img src="https://github.com/dhairyagada/iplbrain/blob/master/screenshots/2.png" width=50%> 
-<img src="https://github.com/dhairyagada/iplbrain/blob/master/screenshots/3.png" width=50%> 
-<img src="https://github.com/dhairyagada/iplbrain/blob/master/screenshots/4.png" width=50%>
+<img src="https://github.com/dhairyagada/iplbrain/blob/master/screenshots/1.png" width=40%>   
+<img src="https://github.com/dhairyagada/iplbrain/blob/master/screenshots/2.png" width=40%> 
+<img src="https://github.com/dhairyagada/iplbrain/blob/master/screenshots/3.png" width=40%> 
+<img src="https://github.com/dhairyagada/iplbrain/blob/master/screenshots/4.png" width=40%>
 
 
