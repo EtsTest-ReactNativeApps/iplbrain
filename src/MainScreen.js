@@ -20,10 +20,35 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import Icon from 'react-native-vector-icons/FontAwesome';
 window.navigator.userAgent = 'react-native';
 import io from '../node_modules/socket.io-client/dist/socket.io'
-
+import api from './utilities/api';
 
 export default class MainScreen extends Component
 {   
+    constructor(){
+        super();
+       this.state={
+         timestamp:'',
+         query_text:'',
+         response_text:'',
+         response_time:'',
+       }
+    
+      }
+    
+      
+      componentWillMount(){
+        
+        api.getData().then((res)=>{
+          this.setState({
+            timestamp:res.timestamp,
+            query_text:res.query_text,
+            response_text:res.response_text,
+            response_time:res.response_time,
+          })
+        })
+    
+      }
+    
     render()
     {
         return(
@@ -49,12 +74,12 @@ export default class MainScreen extends Component
                             <Body />
                             <Right style={styles.time_style} >
                                 <Thumbnail source={require('./imgs/Time.png')} style={styles.time_thumbnail} />
-                                <Text style={styles.time_text} > 20:23:31 </Text>
+                                <Text style={styles.time_text} > {this.state.timestamp} </Text>
                             </Right>
                         </CardItem>
                         <CardItem style={styles.answer_item} >
                             <Text style={styles.answer_text} >
-                                Alexa, ask IPLBox who has the highest strike rate ?
+                               {this.state.query_text}
                             </Text>
                         </CardItem>
                         <CardItem>
@@ -65,12 +90,12 @@ export default class MainScreen extends Component
                             <Body />
                             <Right style={styles.time_style}>
                                 <Thumbnail source={require('./imgs/Time.png')} style={styles.time_thumbnail} />
-                                <Text style={styles.time_text} > 20:23:32 </Text>
+                                <Text style={styles.time_text} > {this.state.timestamp}</Text>
                             </Right>
                         </CardItem>
                         <CardItem style={styles.answer_item} >
                             <Text style={styles.answer_text} >
-                                XYZ Batsman has the highest strike rate.
+                              {this.state.response_text}
                             </Text>
                         </CardItem>
                         <CardItem >
@@ -79,13 +104,13 @@ export default class MainScreen extends Component
                                 <Text style={styles.title_text} >
                                     Response Time :
                                 </Text>
-                                <Text style={styles.answer_text} > 1 second </Text>
+                                <Text style={styles.answer_text} > {this.state.response_time} </Text>
                             </Left>
                         </CardItem>
 
                     </Card>
 
-                    <Card>
+                    {/* <Card>
                         <CardItem >
                             <Left>
                                 <Thumbnail source={require('./imgs/User.png')} style={styles.title_thumbnail} />
@@ -130,7 +155,7 @@ export default class MainScreen extends Component
                             </Left>
                         </CardItem>
 
-                    </Card>
+                    </Card> */}
                     
                 </Content>
             </Container>
