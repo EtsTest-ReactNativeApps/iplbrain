@@ -2,6 +2,14 @@
   "expo": {
     "sdkVersion": "23.0.0",
     "name":"IPL Box",
-    "icon":"./src/imgs/AlexaIPL.png"
+    "icon":"./src/imgs/AlexaIPL.png",
+    "version":"1.0.0",
+    "slug":"iplbox",
+    "ios": {
+      "bundleIdentifier": "com.dhairya.iplbox"
+    },
+    "android": {
+      "package": "com.dhairya.iplbox"
+    }
   }
 }
