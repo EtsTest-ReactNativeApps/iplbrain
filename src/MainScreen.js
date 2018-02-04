@@ -24,24 +24,6 @@ import io from '../node_modules/socket.io-client/dist/socket.io'
 
 export default class MainScreen extends Component
 {   
-    state={
-        timestamp: 'dash',
-        query_text: 'dash',
-        response_text: 'dash',
-        response_time: 'dash',
-        is_error_occured: 'dash'
-    }
-
-    constructor(){
-        super();
-         this.socket=io('https://bot.camouflage81.hasura-app.io/test_websocket',{jsonp: true});
-        /* this.socket.on('intentRequest',()=>{
-            this.setState({timestamp: query_log.timestamp});
-        }) */
-
-        
-      }
-    
     render()
     {
         return(
@@ -149,11 +131,7 @@ export default class MainScreen extends Component
                         </CardItem>
 
                     </Card>
-                    {/* <Card>
-                        <CardItem>
-                        <Text> {this.state.timestamp}</Text>
-                        </CardItem>
-                        </Card> */}
+                    
                 </Content>
             </Container>
 
