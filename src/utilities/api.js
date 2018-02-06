@@ -1,6 +1,6 @@
 var api ={
     getData(){
-        var url='https://bot.camouflage81.hasura-app.io/test';
+        var url='http://bot.defect94.hasura-app.io/logs';
         return fetch(url).then((res)=>res.json());
     }
 };

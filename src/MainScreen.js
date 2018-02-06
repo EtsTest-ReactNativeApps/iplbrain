@@ -29,8 +29,10 @@ export default class MainScreen extends Component
        this.state={
          timestamp:'',
          query_text:'',
-         response_text:'',
+         answer:'',
          response_time:'',
+         is_error_occured:'',
+         query_text_array:[]
        }
     
       }
@@ -42,17 +44,28 @@ export default class MainScreen extends Component
           this.setState({
             timestamp:res.timestamp,
             query_text:res.query_text,
-            response_text:res.response_text,
+            answer:res.answer,
             response_time:res.response_time,
+            is_error_occured:res.is_error_occured,
+            //query_text_array: this.state.query_text_array.concat([query_text_array])
           })
         })
-    
+        
       }
     
     render()
     {
         return(
             <Container>
+                {console.log('working')}
+                
+                {console.log('query_text: ',this.state.query_text)}
+                {console.log('answer: ',this.state.answer)}
+                {console.log('response_time: ',this.state.response_time)}
+                {console.log('timestamp: ',this.state.timestamp)}
+                {console.log('is_error_occured: ',this.state.is_error_occured)}
+
+               
                 <Header style={{marginTop:24,backgroundColor:'#154360'}} >
                     <Left>
                         <Text style={{fontSize:18,fontWeight:'bold',color:'#ffffff'}} >
@@ -95,7 +108,7 @@ export default class MainScreen extends Component
                         </CardItem>
                         <CardItem style={styles.answer_item} >
                             <Text style={styles.answer_text} >
-                              {this.state.response_text}
+                              {this.state.answer}
                             </Text>
                         </CardItem>
                         <CardItem >
@@ -104,7 +117,7 @@ export default class MainScreen extends Component
                                 <Text style={styles.title_text} >
                                     Response Time :
                                 </Text>
-                                <Text style={styles.answer_text} > {this.state.response_time} </Text>
+                                <Text style={styles.answer_text} > {this.state.response_time} seconds </Text>
                             </Left>
                         </CardItem>
 
