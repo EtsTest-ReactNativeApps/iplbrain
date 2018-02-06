@@ -21,6 +21,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 window.navigator.userAgent = 'react-native';
 import io from '../node_modules/socket.io-client/dist/socket.io'
 import api from './utilities/api';
+import Moment from 'react-moment';
 
 export default class MainScreen extends Component
 {   
@@ -32,7 +33,11 @@ export default class MainScreen extends Component
          answer:'',
          response_time:'',
          is_error_occured:'',
-         query_text_array:[]
+
+        /*  query_text_array:[],
+         timestamp_array:['one'],
+         answer_array:['two'],
+         response_time_array:['three'] */
        }
     
       }
@@ -47,14 +52,24 @@ export default class MainScreen extends Component
             answer:res.answer,
             response_time:res.response_time,
             is_error_occured:res.is_error_occured,
-            //query_text_array: this.state.query_text_array.concat([query_text_array])
+        //   query_text_array: this.state.query_text_array.concat([res.query_text]),
+        //    timestamp_array: this.timestamp_array.concat([res.timestamp]),          //Giving Error
+        //    answer_array: this.state.answer_array.concat([res.answer]),
+         //   response_time_array: this.response_time_array.concat([res.response_time]),      //Giving Error
+          
           })
         })
         
+        /* this.setState(
+            {
+                query_text_array: this.state.query_text_array.concat([this.state.query_text])
+            }
+        ) */
       }
     
     render()
     {
+        
         return(
             <Container>
                 {console.log('working')}
@@ -65,7 +80,14 @@ export default class MainScreen extends Component
                 {console.log('timestamp: ',this.state.timestamp)}
                 {console.log('is_error_occured: ',this.state.is_error_occured)}
 
-               
+                {/* {console.log('query_text_array',this.state.query_text_array)} 
+                {console.log('answer_array',this.state.answer_array)} 
+                {console.log('timestap_array',this.state.timestamp_array)} 
+                {console.log('respnse_time_array',this.state.response_time_array)} 
+                {console.log(this.state.query_text_array.length)}
+                {console.log(this.state.timestamp)} */}
+
+
                 <Header style={{marginTop:24,backgroundColor:'#154360'}} >
                     <Left>
                         <Text style={{fontSize:18,fontWeight:'bold',color:'#ffffff'}} >
@@ -76,7 +98,9 @@ export default class MainScreen extends Component
                     <Right/>
                 </Header>
                 <Content>
-                    <Card>
+
+                    
+                   { <Card>
                         <CardItem >
                             <Left>
                                 <Thumbnail source={require('./imgs/User.png')} style={styles.title_thumbnail} />
@@ -117,11 +141,11 @@ export default class MainScreen extends Component
                                 <Text style={styles.title_text} >
                                     Response Time :
                                 </Text>
-                                <Text style={styles.answer_text} > {this.state.response_time} seconds </Text>
+                                <Text style={styles.answer_text} > {this.state.response_time} seconds  </Text>
                             </Left>
                         </CardItem>
 
-                    </Card>
+                    </Card>}
 
                     {/* <Card>
                         <CardItem >
