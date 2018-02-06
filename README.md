@@ -37,3 +37,4 @@ If you are using expo app, make sure that your mobile device and the computer ar
 https://expo.io/@dhairyagada/iplbox
 
 ### Or Download the apk
+https://github.com/dhairyagada/iplbrain/blob/master/apk/IPLBox.apk
