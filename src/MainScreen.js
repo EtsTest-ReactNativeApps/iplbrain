@@ -20,7 +20,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import Icon from 'react-native-vector-icons/FontAwesome';
 window.navigator.userAgent = 'react-native';
 import io from '../node_modules/socket.io-client/dist/socket.io'
-import api from './utilities/api';
+//import api from './utilities/api';
 import Moment from 'react-moment';
 
 export default class MainScreen extends Component
@@ -42,30 +42,32 @@ export default class MainScreen extends Component
     
       }
     
-      
-      componentWillMount(){
-        
-        api.getData().then((res)=>{
-          this.setState({
+
+
+      async getData(){
+        var url='http://bot.defect94.hasura-app.io/logs';
+        fetch(url)
+        .then((res)=>res.json())
+        .then((res)=>
+    {
+        this.setState({
             timestamp:res.timestamp,
             query_text:res.query_text,
             answer:res.answer,
             response_time:res.response_time,
             is_error_occured:res.is_error_occured,
-        //   query_text_array: this.state.query_text_array.concat([res.query_text]),
-        //    timestamp_array: this.timestamp_array.concat([res.timestamp]),          //Giving Error
-        //    answer_array: this.state.answer_array.concat([res.answer]),
-         //   response_time_array: this.response_time_array.concat([res.response_time]),      //Giving Error
-          
-          })
         })
-        
-        /* this.setState(
-            {
-                query_text_array: this.state.query_text_array.concat([this.state.query_text])
-            }
-        ) */
+    })
+
+    .catch((error) => {
+        console.error(error);
+    });
+
       }
+      
+      componentDidMount(){
+        this.timer = setInterval(()=> this.getData(), 1000)
+       }
     
     render()
     {
