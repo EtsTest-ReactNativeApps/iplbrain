@@ -3,7 +3,7 @@
     "sdkVersion": "23.0.0",
     "name":"IPL Box",
     "icon":"./src/imgs/AlexaIPL.png",
-    "version":"1.0.0",
+    "version":"1.0.1",
     "slug":"iplbox",
     "ios": {
       "bundleIdentifier": "com.dhairya.iplbox"
