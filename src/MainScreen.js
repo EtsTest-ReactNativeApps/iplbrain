@@ -15,6 +15,7 @@ import {
     Card,
     CardItem,
     Thumbnail,
+    Toast,
     Fab
 } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -29,7 +30,8 @@ export default class MainScreen extends Component {
         
         this.getData();
         this.state = { logsList: [],
-                        active:'true' };
+                        active:'true',
+                        showToast: 'false' };
         this.LogData = [];
     }
 
@@ -132,8 +134,10 @@ export default class MainScreen extends Component {
             position="bottomRight"
             onPress={() => this.setState({ active: !this.state.active })}>
             <Icon name="ios-cube-outline" />
-            <Button style={{ backgroundColor: '#154360' }}>
+            <Button style={{ backgroundColor: '#154360' }}    onPress={() => {this.setState({logsList:[]}); 
+            console.log('Array Cleared')} }   >
               <Icon name="ios-close-circle-outline" color="white" />
+              
             </Button>
           </Fab>
         </View>
