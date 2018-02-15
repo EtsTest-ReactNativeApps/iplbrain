@@ -15,9 +15,10 @@ import {
     Card,
     CardItem,
     Thumbnail,
+    Fab
 } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 window.navigator.userAgent = 'react-native';
 import Moment from 'react-moment';
 import isEmpty from "lodash/isEmpty";
@@ -25,9 +26,10 @@ export default class MainScreen extends Component {
 
     constructor(props) {
         super(props);
-
+        
         this.getData();
-        this.state = { logsList: [] };
+        this.state = { logsList: [],
+                        active:'true' };
         this.LogData = [];
     }
 
@@ -119,7 +121,23 @@ export default class MainScreen extends Component {
 
                         </Card>
                     ))}
+                    
+                    
                 </Content>
+                <View style={{ flex: 1 }}>
+          <Fab
+            active={this.state.active}
+            direction="up"
+            style={{ backgroundColor: '#154360' }}
+            position="bottomRight"
+            onPress={() => this.setState({ active: !this.state.active })}>
+            <Icon name="ios-cube-outline" />
+            <Button style={{ backgroundColor: '#154360' }}>
+              <Icon name="ios-close-circle-outline" color="white" />
+            </Button>
+          </Fab>
+        </View>
+                
             </Container>
         );
     }
